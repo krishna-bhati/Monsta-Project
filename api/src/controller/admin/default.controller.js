@@ -30,8 +30,7 @@ exports.create = (request, response) => {
 
                 const data = {
                     _status: false,
-                    _message: 'Error',
-                    _error: errors,
+                    _message: errors.join(","),
                     _data: null
                 }
                 response.send(data);
@@ -39,8 +38,7 @@ exports.create = (request, response) => {
     } catch (error) {
         const data = {
             _status: false,
-            _message: 'Something went wrong',
-            _error: error,
+            _message: error.message,
             _data: null,
         }
         response.send(data);
@@ -130,8 +128,7 @@ exports.view = async (request, response) => {
             .catch((error) => {
                 const data = {
                     _status: false,
-                    _message: 'Record not found',
-                    _error: error,
+                    _message: error.message,
                     _data: [],
                 }
                 response.send(data);
@@ -139,8 +136,7 @@ exports.view = async (request, response) => {
     } catch (error) {
         const data = {
             _status: false,
-            _message: 'Something went wrong',
-            _error: error.message,
+            _message: error.message,
             _data: [],
         }
         response.send(data);
@@ -171,10 +167,10 @@ exports.details = async (request, response) => {
                     response.send(data);
                 }
             })
-            .catch(() => {
+            .catch((error) => {
                 const data = {
                     _status: false,
-                    _message: 'Invalid ID format',
+                    _message: error.message,
                     _data: null,
                 }
                 response.send(data);
@@ -182,8 +178,7 @@ exports.details = async (request, response) => {
     } catch (error) {
         const data = {
             _status: false,
-            _message: 'Something went wrong',
-            _error: error.message,
+            _message: error.message,
             _data: null,
         }
         response.send(data);
@@ -236,8 +231,7 @@ exports.update = async (request, response) => {
 
                 const data = {
                     _status: false,
-                    _message: 'Error',
-                    _error: errors,
+                    _message: errors.join(","),
                     _data: null
                 }
                 response.send(data);
@@ -245,8 +239,7 @@ exports.update = async (request, response) => {
     } catch (error) {
         const data = {
             _status: false,
-            _message: 'Something went wrong',
-            _error: error,
+            _message: error.message,
             _data: null,
         }
         response.send(data);
@@ -294,8 +287,7 @@ exports.destroy = async (request, response) => {
 
                 const data = {
                     _status: false,
-                    _message: 'Something went wrong !!',
-                    _error: errors,
+                    _message: errors.join(","),
                     _data: null
                 }
                 response.send(data);
@@ -304,8 +296,7 @@ exports.destroy = async (request, response) => {
     } catch (error) {
         const data = {
             _status: false,
-            _message: 'Something went wrong !!',
-            _error: error,
+            _message: error.message,
             _data: null
         }
         response.send(data);
@@ -329,7 +320,7 @@ exports.changeStatus = async (request, response) => {
                 if (result.matchedCount) {
                     const data = {
                         _status: true,
-                        _message: 'Record deleted succussfully !!',
+                        _message: 'Record deleted successfully !!',
                         _data: result
                     }
                     response.send(data);
@@ -353,8 +344,7 @@ exports.changeStatus = async (request, response) => {
 
                 const data = {
                     _status: false,
-                    _message: 'Something went wrong !!',
-                    _error: errors,
+                    _message: errors.join(","),
                     _data: null
                 }
                 response.send(data);
@@ -363,8 +353,7 @@ exports.changeStatus = async (request, response) => {
     } catch (error) {
         const data = {
             _status: false,
-            _message: 'Something went wrong !!',
-            _error: error,
+            _message: error.message,
             _data: null
         }
         response.send(data);

@@ -224,8 +224,7 @@ exports.update = async (request, response) => {
 
                 const data = {
                     _status: false,
-                    _message: 'Error',
-                    _error: errors,
+                    _message: errors.join(","),
                     _data: null
                 }
                 response.send(data);
@@ -281,7 +280,7 @@ exports.destroy = async (request, response) => {
 
                 const data = {
                     _status: false,
-                    _message: errors,
+                    _message: errors.join(","),
                     _data: null
                 }
                 response.send(data);
@@ -337,7 +336,7 @@ exports.changeStatus = async (request, response) => {
 
                 const data = {
                     _status: false,
-                    _message: errors,
+                    _message: errors.join(","),
                     _data: null
                 }
                 response.send(data);

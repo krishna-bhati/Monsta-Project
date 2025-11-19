@@ -11,3 +11,8 @@
 .custom-scroll::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.4);
 }
+
+.dropify-wrapper .dropify-message p {
+  font-size: 25px !important;
+  line-height: 35px;
+}
